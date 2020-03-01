@@ -1,6 +1,7 @@
 package metier;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,7 +23,7 @@ public class Todolst {
             lst.add(tache);
             System.out.println("La tâche a été créée avec succès !");
         }else{
-            throw new planifTacheException("La tache ne peut pas être créer dans le passer !");
+            throw new planifTacheException("La tache ne peut pas être créer dans le passé !");
         }
 
     }
@@ -39,6 +40,7 @@ public class Todolst {
         }
         if(tache.getStatus() == Status.open){
             tache.setStatus(Status.canceled);
+            lst.remove(tache);
             System.out.println("La tâche a été annulée avec succès !");
         }else{
             throw new planifTacheException("La tache est déjà annulée ou a été terminée !");
@@ -52,12 +54,16 @@ public class Todolst {
                 tache = t;
             }
         }
+        Date newDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        Date ajd = new Date();
         if(tache == null){
             throw new planifTacheException("La tâche n'existe pas !");
-
+        }else if(newDate.compareTo(ajd) < 0){
+            throw new planifTacheException("La date ne peut pas être dans le passé !");
+        }else{
+            tache.setDate(date);
+            System.out.println("La tâche a été replanifiée avec succès !");
         }
-        tache.setDate(date);
-        System.out.println("La tâche a été replanifiée avec succès !");
     }
 
     public void affichage(){

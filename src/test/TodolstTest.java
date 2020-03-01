@@ -38,7 +38,6 @@ public class TodolstTest {
         Todolst todolist = new Todolst();
         Createur crea = new Createur("Kilic", "Adis");
         todolist.creer(crea, "test", "10/03/2020");
-
         todolist.annuler("test");
     }
 
@@ -47,8 +46,8 @@ public class TodolstTest {
         Todolst todolist = new Todolst();
         Createur crea = new Createur("Kilic", "Adis");
         todolist.creer(crea, "test", "10/03/2020");
-
         todolist.annuler("tst");
+
     }
 
     @org.junit.Test

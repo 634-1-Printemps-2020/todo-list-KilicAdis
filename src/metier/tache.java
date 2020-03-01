@@ -14,7 +14,7 @@ class Tache {
     private Resolution resolution;
 
     public Tache(Createur createur, String description, String date, Status status, Resolution resolution) throws ParseException {
-        this.date =new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        this.date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         this.createur = createur;
         this.description = description;
         this.status = status;
